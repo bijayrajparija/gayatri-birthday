@@ -1,0 +1,939 @@
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   BODY
+========================================== */
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    font-family: "Poppins", sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #3b1d5a 0%,
+            #1b102d 45%,
+            #0c0716 100%
+        );
+}
+
+
+/* ==========================================
+   SCREEN
+========================================== */
+
+.screen {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    min-height: 100dvh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: scale(1.03);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s ease;
+
+    z-index: 10;
+}
+
+
+.screen.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform: scale(1);
+}
+
+
+/* ==========================================
+   BACKGROUND PARTICLES
+========================================== */
+
+#particles {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.particle {
+    position: absolute;
+
+    bottom: -30px;
+
+    opacity: 0.6;
+
+    animation-name: floating;
+
+    animation-timing-function: linear;
+
+    animation-fill-mode: forwards;
+
+    pointer-events: none;
+}
+
+
+@keyframes floating {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================
+   WELCOME SCREEN
+========================================== */
+
+.welcome-content {
+    width: 100%;
+    max-width: 500px;
+
+    text-align: center;
+
+    z-index: 2;
+}
+
+
+.moon {
+    font-size: 70px;
+
+    margin-bottom: 20px;
+
+    animation: floatingMoon 3s ease-in-out infinite;
+}
+
+
+@keyframes floatingMoon {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+.small-title {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 0.7;
+
+    margin-bottom: 12px;
+}
+
+
+.welcome-content h1 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: clamp(48px, 13vw, 75px);
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+
+.subtitle {
+    font-size: 14px;
+
+    font-weight: 300;
+
+    opacity: 0.75;
+
+    margin-bottom: 35px;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.main-button {
+    border: none;
+
+    outline: none;
+
+    padding: 14px 28px;
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6fae,
+            #c850c0
+        );
+
+    box-shadow:
+        0 8px 30px rgba(200, 80, 192, 0.3);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.main-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(200, 80, 192, 0.45);
+}
+
+
+.main-button:active {
+    transform: scale(0.96);
+}
+
+
+/* ==========================================
+   ENVELOPE
+========================================== */
+
+.envelope-container {
+    width: 100%;
+
+    max-width: 400px;
+
+    text-align: center;
+}
+
+
+.envelope-hint {
+    font-size: 14px;
+
+    opacity: 0.75;
+
+    margin-bottom: 30px;
+}
+
+
+.envelope {
+    position: relative;
+
+    width: 280px;
+    height: 190px;
+
+    margin: 0 auto 25px;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+
+    filter:
+        drop-shadow(
+            0 20px 30px rgba(0, 0, 0, 0.35)
+        );
+}
+
+
+.envelope-back {
+    position: absolute;
+
+    inset: 0;
+
+    background: #9b4d96;
+
+    border-radius: 5px;
+}
+
+
+.letter {
+    position: absolute;
+
+    left: 15px;
+    right: 15px;
+
+    bottom: 5px;
+
+    height: 150px;
+
+    background: #fff8fc;
+
+    color: #5b3158;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    padding-top: 30px;
+
+    border-radius: 4px;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: 25px;
+
+    z-index: 2;
+
+    transition:
+        transform 1.2s ease;
+}
+
+
+.envelope-front {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 140px solid transparent;
+
+    border-right: 140px solid transparent;
+
+    border-bottom: 100px solid #c95cae;
+
+    z-index: 4;
+}
+
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 140px solid transparent;
+
+    border-right: 140px solid transparent;
+
+    border-top: 100px solid #b34e9f;
+
+    transform-origin: top center;
+
+    transition:
+        transform 0.8s ease;
+
+    z-index: 5;
+}
+
+
+.envelope.opened .envelope-flap {
+    transform:
+        rotateX(180deg);
+}
+
+
+.envelope.opened .letter {
+    transform:
+        translateY(-90px);
+}
+
+
+.tap-hint {
+    font-size: 12px;
+
+    opacity: 0.55;
+}
+
+
+/* ==========================================
+   BIRTHDAY CARD
+========================================== */
+
+.birthday-card {
+    width: 100%;
+
+    max-width: 430px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+
+.cake {
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+    animation:
+        heartbeat 2s ease-in-out infinite;
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+
+.birthday-card h1 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: clamp(42px, 11vw, 65px);
+
+    font-weight: 600;
+
+    margin-bottom: 0;
+}
+
+
+.birthday-card h2 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 32px;
+
+    font-weight: 500;
+
+    margin-bottom: 20px;
+
+    color: #ff9dcc;
+}
+
+
+.birthday-text {
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    opacity: 0.78;
+
+    margin-bottom: 30px;
+}
+
+
+/* ==========================================
+   MESSAGE CARD
+========================================== */
+
+.message-card {
+    width: 100%;
+
+    max-width: 500px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+
+.message-heart {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+
+    animation:
+        heartbeat 1.8s ease-in-out infinite;
+}
+
+
+.message-card h2 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 35px;
+
+    font-weight: 600;
+
+    margin-bottom: 25px;
+}
+
+
+.typing-text {
+    min-height: 250px;
+
+    white-space: pre-line;
+
+    font-size: 14px;
+
+    line-height: 2;
+
+    font-weight: 300;
+
+    opacity: 0.88;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   FINAL BUTTON
+========================================== */
+
+.hidden-button {
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        visibility 0.6s ease;
+
+    margin-top: 20px;
+}
+
+
+.hidden-button.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   FINAL SCREEN
+========================================== */
+
+.final-card {
+    width: 100%;
+
+    max-width: 500px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+
+.final-heart {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+    animation:
+        heartbeat 1.8s ease-in-out infinite;
+}
+
+
+.final-card h1 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 52px;
+
+    font-weight: 600;
+
+    margin-bottom: 25px;
+}
+
+
+.final-message {
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    opacity: 0.82;
+}
+
+
+.final-message p {
+    margin-bottom: 15px;
+}
+
+
+.wish {
+    margin: 25px 0;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #ffb2d8;
+}
+
+
+.final-card h2 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 30px;
+
+    font-weight: 500;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   CELEBRATION
+========================================== */
+
+.celebration-screen {
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #49245f,
+            #140b22
+        );
+}
+
+
+.celebration-content {
+    position: relative;
+
+    z-index: 20;
+
+    text-align: center;
+}
+
+
+.celebration-emoji {
+    font-size: 75px;
+
+    margin-bottom: 15px;
+
+    animation:
+        celebrationBounce 1s ease-in-out infinite;
+}
+
+
+@keyframes celebrationBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+
+.celebration-content h1 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: clamp(50px, 14vw, 80px);
+
+    margin-bottom: 10px;
+}
+
+
+.celebration-content p {
+    font-size: 17px;
+
+    opacity: 0.85;
+
+    margin-bottom: 25px;
+}
+
+
+.celebration-wish {
+    font-size: 13px;
+
+    opacity: 0.7;
+
+    margin-bottom: 25px;
+}
+
+
+.celebration-hearts {
+    font-size: 30px;
+
+    letter-spacing: 8px;
+}
+
+
+/* ==========================================
+   CELEBRATION FALLING PARTICLES
+========================================== */
+
+.celebration-heart {
+    position: absolute;
+
+    top: -50px;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    animation-name: fall;
+
+    animation-timing-function: linear;
+
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fall {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================
+   MUSIC BUTTON
+========================================== */
+
+.music-button {
+    position: fixed;
+
+    top: 18px;
+    right: 18px;
+
+    width: 44px;
+    height: 44px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    backdrop-filter: blur(10px);
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.music-button:hover {
+    transform: scale(1.08);
+
+    background:
+        rgba(255, 255, 255, 0.18);
+}
+
+
+.music-button:active {
+    transform: scale(0.94);
+}
+
+
+.music-button.playing {
+    animation:
+        musicPulse 1.5s infinite;
+}
+
+
+@keyframes musicPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 rgba(255, 105, 180, 0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px rgba(255, 105, 180, 0.5);
+    }
+}
+
+
+/* ==========================================
+   SMALL PHONE SCREENS
+========================================== */
+
+@media (max-height: 650px) {
+
+    .moon {
+        font-size: 50px;
+
+        margin-bottom: 10px;
+    }
+
+    .welcome-content h1 {
+        font-size: 45px;
+    }
+
+    .subtitle {
+        margin-bottom: 20px;
+    }
+
+    .birthday-card {
+        padding: 25px 20px;
+    }
+
+    .cake {
+        font-size: 45px;
+    }
+
+    .message-card,
+    .final-card {
+        padding: 25px 20px;
+    }
+
+    .typing-text {
+        min-height: 200px;
+
+        line-height: 1.7;
+    }
+
+}
