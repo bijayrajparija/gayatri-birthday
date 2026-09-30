@@ -265,18 +265,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
 
     const message =
-`I don't know if you were expecting
-a message like this today...
+`“Whatever happened between us, today isn't about that. It's your birthday.
 
-But I wanted to give you
-something a little different.
+So I simply wish you happiness, peace, success, and many beautiful moments ahead.
 
-You deserve to know that there is
-someone who genuinely wishes
-the very best for you.
-
-Someone who smiles a little more
-when you smile.
+Keep smiling. Take care of yourself. And may this new year of your life be kinder and brighter than the last.”
 
 Someone who is quietly grateful
 that you are a part of this world.
@@ -288,7 +281,12 @@ and everything your heart wishes for.
 And no matter where life takes you...
 
 I hope you keep smiling
-the way you do. ❤️`;
+the way you do. ❤️
+
+“No expectations.
+No explanations.
+Just one sincere wish from the heart—
+May you always be happy.;
 
 
     let typingStarted = false;
